@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Intercambio Navideño</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&family=Yeseva+One&display=swap" rel="stylesheet">
+<style>
+/* Plan: una posada de noche. Fondo verde pino; el contenido vive en papel crema
+   (etiquetas de regalo colgadas y hojas). El papel picado de arriba es el unico
+   lugar con todos los colores; el resto usa rojo nochebuena y oro con mesura. */
+:root{
+  --pino:#12352b;
+  --pino-hondo:#0c261f;
+  --pino-luz:#1f5444;
+  --papel:#fbf2de;
+  --papel-raya:#dccba6;
+  --tinta:#2a2118;
+  --tinta-suave:#6b5a45;
+  --rojo:#c9283b;
+  --rojo-hondo:#a31d2e;
+  --oro:#e9ae3a;
+  --rosa:#e2578a;
+  --menta:#58ac89;
+  --bien-fondo:#d6ecdf; --bien-texto:#1c5a3c;
+  --espera-fondo:#fbe6b4; --espera-texto:#76500a;
+  --display:'Yeseva One', Georgia, 'Times New Roman', serif;
+  --cuerpo:'Albert Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mano:'Caveat', 'Segoe Script', 'Bradley Hand', cursive;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:radial-gradient(1100px 460px at 50% -120px, var(--pino-luz) 0%, transparent 72%), var(--pino);
+  background-color:var(--pino);
+  color:var(--papel);
+  font-family:var(--cuerpo);
+  font-size:1rem;
+  line-height:1.5;
+  min-height:100%;
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
+:focus-visible{outline:3px solid var(--oro);outline-offset:2px}
+
+.picado{display:flex;justify-content:center;gap:5px;height:62px;overflow:hidden;border-top:3px solid var(--oro)}
+.picado svg{flex:0 0 52px;width:52px;height:62px;fill:currentColor;transform-origin:50% 0;animation:mecer 4.6s ease-in-out infinite alternate}
+.picado svg:nth-child(5n+1){color:var(--rojo)}
+.picado svg:nth-child(5n+2){color:var(--oro)}
+.picado svg:nth-child(5n+3){color:var(--papel)}
+.picado svg:nth-child(5n+4){color:var(--rosa)}
+.picado svg:nth-child(5n+5){color:var(--menta)}
+.picado svg:nth-child(2n){animation-delay:-1.5s}
+.picado svg:nth-child(3n){animation-delay:-3.1s}
+@keyframes mecer{from{transform:rotate(-2.4deg)}to{transform:rotate(2.4deg)}}
+
+.marco{max-width:1080px;margin:0 auto;padding:0 20px 56px}
+
+.cabecera{padding:30px 0 22px;display:grid;gap:14px}
+.ceja{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--oro)}
+.cabecera h1{font-family:var(--display);font-weight:400;font-size:clamp(2.3rem,7.2vw,4.4rem);line-height:.98;text-wrap:balance;overflow-wrap:anywhere}
+.datos{display:flex;flex-wrap:wrap;gap:8px}
+.datos li{border:1px solid rgba(251,242,222,.28);border-radius:999px;padding:6px 14px;font-size:.92rem}
+.datos span{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--oro);margin-right:8px}
+
+.pestanas{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:18px}
+.pestana{padding:9px 18px;border-radius:999px;border:1.5px solid rgba(251,242,222,.38);color:var(--papel);text-decoration:none;font-weight:600;font-size:.95rem}
+.pestana:hover{border-color:var(--papel)}
+.pestana[aria-current="page"]{background:var(--papel);border-color:var(--papel);color:var(--pino)}
+
+.barra{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-bottom:22px;padding:10px 16px;border-radius:14px;background:var(--pino-hondo);border:1px dashed rgba(233,174,58,.55);font-size:.92rem}
+.barra[hidden]{display:none}
+.barra.pendiente{background:var(--oro);border-color:var(--oro);color:var(--tinta);color-scheme:light}
+.barra .lado{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.barra .menor{opacity:.8}
+
+h2{font-family:var(--display);font-weight:400;font-size:1.75rem;line-height:1.15;text-wrap:balance}
+h3{font-family:var(--display);font-weight:400;font-size:1.3rem;line-height:1.2;text-wrap:balance}
+.bajada{max-width:60ch;opacity:.86}
+.intro{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 24px;margin-bottom:26px}
+.intro > div{display:grid;gap:6px}
+
+.boton{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border:0;border-radius:999px;background:var(--rojo);color:#fff;font-weight:600;font-size:.95rem;line-height:1.2;text-decoration:none;cursor:pointer}
+.boton:hover{background:var(--rojo-hondo)}
+.boton.claro{background:var(--papel);color:var(--pino)}
+.boton.claro:hover{background:#fff}
+.boton.sec{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px rgba(42,33,24,.4)}
+.boton.sec:hover{background:rgba(42,33,24,.07)}
+.boton.wa{background:#1d7f55}
+.boton.wa:hover{background:#166443}
+.boton.chico{padding:7px 13px;font-size:.85rem}
+.boton[disabled],.boton[aria-disabled="true"]{opacity:.45;cursor:not-allowed;pointer-events:none}
+.enlace{background:none;border:0;padding:0;color:inherit;font-weight:600;font-size:.85rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+.etiquetas{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:34px 22px;padding-top:14px}
+.colgada{position:relative;filter:drop-shadow(0 10px 12px rgba(0,0,0,.36));transform:rotate(var(--giro,0deg));transform-origin:50% 0;transition:transform .35s ease}
+.colgada:nth-child(4n+1){--giro:-1.3deg}
+.colgada:nth-child(4n+2){--giro:.9deg}
+.colgada:nth-child(4n+3){--giro:-.5deg}
+.colgada:nth-child(4n+4){--giro:1.4deg}
+.colgada:hover,.colgada:focus-within{transform:rotate(0deg)}
+.colgada::before{content:"";position:absolute;left:50%;top:-16px;width:2px;height:34px;margin-left:-1px;background:var(--oro);z-index:1}
+.etiqueta{position:relative;height:100%;background:var(--papel);color:var(--tinta);color-scheme:light;padding:48px 20px 16px;border-radius:0 0 14px 14px;clip-path:polygon(30px 0,calc(100% - 30px) 0,100% 30px,100% 100%,0 100%,0 30px)}
+.etiqueta::before{content:"";position:absolute;left:50%;top:13px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--pino);box-shadow:0 0 0 3px var(--oro)}
+.eti-ceja{text-align:center;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave)}
+.eti-nombre{font-family:var(--mano);font-weight:700;font-size:2.5rem;line-height:1;text-align:center;color:var(--rojo);padding:2px 0 10px;margin-bottom:6px;border-bottom:1.5px dashed var(--papel-raya);overflow-wrap:anywhere}
+.eti-lista li{display:grid;grid-template-columns:20px 1fr;gap:8px;padding:8px 0;border-bottom:1px solid rgba(42,33,24,.1)}
+.eti-lista li:last-child{border-bottom:0}
+.eti-lista .num{font-family:var(--display);color:var(--rojo);font-size:.95rem;line-height:1.5}
+.eti-lista a,.eti-lista .sin-link{font-weight:600;overflow-wrap:anywhere}
+.eti-lista a{text-decoration:underline;text-decoration-color:var(--rojo);text-decoration-thickness:1.5px;text-underline-offset:3px}
+.eti-lista a:hover{color:var(--rojo-hondo)}
+.dominio{display:block;font-size:.78rem;color:var(--tinta-suave);overflow-wrap:anywhere}
+.vacio{font-family:var(--mano);font-size:1.35rem;line-height:1.2;text-align:center;color:var(--tinta-suave);padding:14px 0 10px}
+.eti-cuenta{text-align:right;font-size:.74rem;color:var(--tinta-suave);font-variant-numeric:tabular-nums;padding-top:6px}
+
+.hoja{background:var(--papel);color:var(--tinta);color-scheme:light;border-radius:18px;padding:24px;display:grid;gap:16px;align-content:start}
+.hoja .bajada{opacity:1;color:var(--tinta-suave)}
+.pila{display:grid;gap:20px}
+.dos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:20px;align-items:start}
+.muro .hoja{margin-bottom:34px}
+
+.campo{display:grid;gap:5px;font-size:.82rem;font-weight:600;color:var(--tinta-suave);min-width:0}
+.campo input,.campo select,.campo textarea{width:100%;min-width:0;padding:10px 12px;border:1.5px solid var(--papel-raya);border-radius:10px;background:#fffdf7;color:var(--tinta);font-size:1rem;font-weight:400}
+.campo textarea{min-height:120px;resize:vertical}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--rojo);outline:none;box-shadow:0 0 0 3px rgba(201,40,59,.18)}
+.campo input:disabled{background:transparent;border-style:dashed;color:var(--tinta)}
+.campo .nota{font-weight:400;font-size:.78rem}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px}
+.fila-deseo{display:grid;grid-template-columns:22px minmax(0,1fr) minmax(0,1.3fr);gap:8px;align-items:end}
+.fila-deseo .num{font-family:var(--display);color:var(--rojo);padding-bottom:10px}
+.acciones{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.error{color:var(--rojo-hondo);font-weight:600;font-size:.9rem}
+.error:empty{display:none}
+.nota{font-size:.85rem;color:var(--tinta-suave)}
+.caja-aviso{background:var(--espera-fondo);color:var(--espera-texto);border-radius:12px;padding:12px 14px;font-size:.92rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;counter-reset:paso}
+.pasos li{counter-increment:paso;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:12px;border-radius:12px;border:1.5px solid var(--papel-raya);font-size:.9rem;line-height:1.35}
+.pasos li::before{content:counter(paso);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--tinta);color:var(--papel);font-family:var(--display);font-size:.95rem}
+.pasos li.hecho{background:var(--bien-fondo);border-color:transparent;color:var(--bien-texto)}
+.pasos li.hecho::before{content:"\2713";background:var(--bien-texto);color:#fff;font-family:var(--cuerpo);font-weight:700}
+
+.pastilla{display:inline-block;font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.pastilla.bien{background:var(--bien-fondo);color:var(--bien-texto)}
+.pastilla.espera{background:var(--espera-fondo);color:var(--espera-texto)}
+.envios li{display:grid;grid-template-columns:minmax(90px,1fr) auto;gap:8px 12px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(42,33,24,.12)}
+.envios li:last-child{border-bottom:0}
+.envios .quien{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-weight:700;font-size:1.05rem}
+.envios .acciones{justify-content:flex-end}
+.envios .manual{grid-column:1/-1}
+.conteo{font-family:var(--display);font-size:1.5rem;font-variant-numeric:tabular-nums}
+.conteo small{font-family:var(--cuerpo);font-size:.88rem;color:var(--tinta-suave);margin-left:8px}
+
+.fichas{display:flex;flex-wrap:wrap;gap:6px}
+.ficha{padding:6px 13px;border-radius:999px;border:1.5px solid var(--papel-raya);background:transparent;color:var(--tinta);font-weight:600;font-size:.88rem;cursor:pointer}
+.ficha[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:var(--papel)}
+.ficha .cuantos{font-weight:400;opacity:.7;margin-left:5px;font-variant-numeric:tabular-nums}
+.persona{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:8px;align-items:end;padding:6px 0}
+.lista-simple li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid rgba(42,33,24,.1)}
+details > summary{cursor:pointer;font-weight:600}
+details[open] > summary{margin-bottom:12px}
+details .dentro{display:grid;gap:12px}
+
+.sobre{max-width:560px;margin:0 auto}
+.codigo{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace !important;font-size:1.5rem !important;letter-spacing:.14em;text-align:center;text-transform:uppercase}
+.revelado{max-width:440px;margin:30px auto 0;animation:caer .9s cubic-bezier(.2,.9,.3,1.15) both}
+.revelado .colgada{--giro:0deg}
+.revelado .eti-nombre{font-size:3.6rem;padding-bottom:14px}
+.revelado .pie-eti{display:grid;gap:10px;justify-items:center;padding-top:12px;text-align:center}
+@keyframes caer{0%{opacity:0;transform:translateY(-46px) rotate(-8deg)}55%{opacity:1;transform:translateY(0) rotate(3deg)}100%{transform:none}}
+
+.pie{padding-top:40px;font-size:.84rem;opacity:.7;max-width:62ch}
+.tostada{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);max-width:calc(100% - 32px);background:var(--papel);color:var(--tinta);border-radius:999px;padding:10px 20px;font-weight:600;font-size:.92rem;box-shadow:0 10px 30px rgba(0,0,0,.45);z-index:20}
+.tostada[hidden]{display:none}
+
+@media (max-width:520px){
+  .hoja{padding:18px 16px}
+  .fila-deseo{grid-template-columns:22px minmax(0,1fr)}
+  .fila-deseo .campo:last-child{grid-column:2}
+  .persona{grid-template-columns:minmax(0,1fr) auto}
+  .persona .campo:nth-child(2){grid-column:1/-1;grid-row:2}
+  .envios li{grid-template-columns:1fr}
+  .envios .acciones{justify-content:flex-start}
+  .picado{height:50px}
+  .picado svg{flex-basis:42px;width:42px;height:50px}
+}
+@media (prefers-reduced-motion:reduce){
+  .picado svg,.revelado{animation:none}
+  .colgada{transition:none}
+}
+
+/* --- version GitHub Pages + Supabase --- */
+.barra.falla{background:#5b1620;border-color:#e58794;border-style:solid}
+.saludo{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px}
+.revelado{margin-top:0}
+.entrada{display:grid;gap:26px}
+.pie .enlace{font-size:inherit;font-weight:400}
+.envios .codigo-mini{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.8rem;font-weight:400;color:var(--tinta-suave);letter-spacing:.06em}
+.cargando{font-family:var(--mano);font-size:1.5rem;opacity:.85;padding:10px 0 30px}
+</style>
+</head>
+<body>
+<div id="raiz"></div>
+<noscript><p style="padding:24px">Esta página necesita JavaScript para funcionar.</p></noscript>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script>(function () {
+'use strict';
+
+var MAX_DESEOS = 5;
+var CFG = window.INTERCAMBIO_CONFIG || {};
+var URL_BASE = String(CFG.url || '').trim().replace(/\/+$/, '');
+var LLAVE = String(CFG.llave || '').trim();
+var configurado = /^https:\/\/[^\s/]+\.[^\s/]+$/.test(URL_BASE) && URL_BASE.indexOf('TU-PROYECTO') < 0 &&
+  LLAVE.length > 20 && LLAVE.indexOf('PEGA_AQUI') < 0;
+var cliente = null;
+try {
+  if (configurado && window.supabase && window.supabase.createClient) cliente = window.supabase.createClient(URL_BASE, LLAVE);
+} catch (e) { cliente = null; }
+
+/* ---------- utilidades ---------- */
+function agregar(e, c) {
+  if (c == null || c === false) return;
+  if (Array.isArray(c)) { c.forEach(function (x) { agregar(e, x); }); return; }
+  e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+}
+function el(tag, attrs) {
+  var e = document.createElement(tag), k, v, i;
+  if (attrs) for (k in attrs) {
+    v = attrs[k];
+    if (v == null || v === false) continue;
+    if (k === 'class') e.className = v;
+    else if (k === 'text') e.textContent = v;
+    else if (k === 'value') e.value = v;
+    else if (k.slice(0, 2) === 'on') e.addEventListener(k.slice(2), v);
+    else e.setAttribute(k, v === true ? '' : v);
+  }
+  for (i = 2; i < arguments.length; i++) agregar(e, arguments[i]);
+  return e;
+}
+function campo(etiqueta, control, nota) {
+  return el('label', { class: 'campo' }, etiqueta, control, nota ? el('span', { class: 'nota', text: nota }) : null);
+}
+function guardarLocal(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+function leerLocal(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }
+function limpiarCodigo(s) { return String(s || '').toUpperCase().replace(/[^A-Z0-9]/g, ''); }
+function formatoCodigo(c) { c = String(c || ''); return c.slice(0, 4) + '-' + c.slice(4); }
+function normalizarUrl(u) {
+  u = String(u || '').trim();
+  if (!u) return '';
+  if (!/^https?:\/\//i.test(u)) { if (/\s/.test(u) || u.indexOf('.') < 0) return null; u = 'https://' + u; }
+  try { var x = new URL(u); return (x.protocol === 'http:' || x.protocol === 'https:') ? x.href : null; } catch (e) { return null; }
+}
+function dominio(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
+function fechaLarga(iso) {
+  var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+  if (!m) return '';
+  var d = new Date(+m[1], +m[2] - 1, +m[3], 12);
+  try { return d.toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long' }); } catch (e) { return m[0]; }
+}
+function enlaceWa(tel, texto) {
+  var n = String(tel || '').replace(/\D/g, '');
+  if (n.length === 10) n = '52' + n;
+  return 'https://wa.me/' + n + '?text=' + encodeURIComponent(texto);
+}
+function enlacePagina() { return location.origin + location.pathname; }
+function datosEvento(ev) {
+  var l = [];
+  if (ev.fecha) l.push('Fecha: ' + fechaLarga(ev.fecha));
+  if (ev.lugar) l.push('Lugar: ' + ev.lugar);
+  if (ev.presupuesto) l.push('Presupuesto: ' + ev.presupuesto);
+  return l;
+}
+function mensajeCodigo(nombre, codigo, ev) {
+  var l = ['🎄 ¡Hola, ' + nombre + '! Este es tu código personal para ' + (ev.nombre || 'nuestro intercambio') + ':', '',
+    formatoCodigo(codigo), '',
+    '1. Entra a ' + enlacePagina(),
+    '2. Toca "Entrar con mi código" y escríbelo.', '',
+    'Con él armas tu lista de deseos (hasta ' + MAX_DESEOS + ' regalos) y, cuando se haga el sorteo, ves a quién le regalas. No lo compartas con nadie 🤫'];
+  var extra = datosEvento(ev);
+  if (extra.length) { l.push(''); l = l.concat(extra); }
+  return l.join('\n');
+}
+function mensajeSorteo(ev) {
+  var l = ['🎁 ¡Ya se hizo el sorteo de ' + (ev.nombre || 'nuestro intercambio') + '!', '',
+    'Entra a ' + enlacePagina() + ', toca "Entrar con mi código" y descubre a quién le regalas. Ahí mismo ves su lista de deseos.'];
+  var extra = datosEvento(ev);
+  if (extra.length) { l.push(''); l = l.concat(extra); }
+  return l.join('\n');
+}
+function rpc(fn, args) {
+  return cliente.rpc(fn, args || {}).then(function (r) { if (r.error) throw r.error; return r.data; });
+}
+function mensajeError(e) {
+  var m = (e && e.message) || '', c = (e && e.code) || '';
+  if (/Failed to fetch|NetworkError|Load failed|fetch/i.test(m) && !c) return 'No hay respuesta de la base de datos. Revisa tu conexión e inténtalo de nuevo.';
+  if (c === 'PGRST202' || c === '42883') return 'La base de datos aún no está instalada o está incompleta. Vuelve a ejecutar base-de-datos.sql en Supabase.';
+  if (c === '42501' || /permission denied|No autorizado/i.test(m)) return 'Esta sesión no tiene permiso para eso. Cierra sesión y vuelve a entrar.';
+  if (/JWT|token/i.test(m)) return 'Tu sesión venció. Cierra sesión y vuelve a entrar.';
+  if (c === 'P0001' && m) return m;
+  return m || 'Algo falló. Inténtalo de nuevo.';
+}
+
+/* ---------- estado ---------- */
+var S = {
+  tab: 'muro',
+  muro: null, cargaMuro: 'cargando', errorMuro: '',
+  codigo: '', yo: null, errorCodigo: '', entrando: false, estrenar: false, errorLista: '', guardandoLista: false,
+  sesion: null, admin: null, cargaPanel: 'no', errorLogin: '', entrandoPanel: false,
+  guardado: 'ok', errorPanel: '', editando: null, confirma: null, sorteando: false, manual: {}
+};
+function eventoVisible() { return (S.muro && S.muro.evento) || { nombre: 'Intercambio Navideño', fecha: null, presupuesto: '', lugar: '', sorteo: false }; }
+function personaAdmin(id) { var l = S.admin.personas, i; for (i = 0; i < l.length; i++) if (l[i].id === id) return l[i]; return null; }
+
+var raiz = document.getElementById('raiz');
+var BANDERA = '<svg viewBox="0 0 60 72" aria-hidden="true"><path fill-rule="evenodd" d="M0 0H60V56L50 66 40 56 30 66 20 56 10 66 0 56ZM30 12 40 27 30 42 20 27ZM6 10a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM46 10a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM6 44a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM46 44a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM24 48h12v3H24ZM8 26h6v3H8ZM46 26h6v3H46Z"/></svg>';
+var $picado = el('div', { class: 'picado', 'aria-hidden': 'true' });
+$picado.innerHTML = new Array(33).join(BANDERA);
+var $cab = el('header', { class: 'cabecera' });
+var $nav = el('nav', { class: 'pestanas', 'aria-label': 'Secciones' });
+var $barra = el('div', { class: 'barra', hidden: true });
+var $main = el('main', { id: 'contenido' });
+var $pie = el('p', { class: 'pie' },
+  'Tu código es personal: con él solo se abre tu lista y tu resultado. Nadie más puede ver a quién le regalas, ni quién te regala a ti. ',
+  el('button', { class: 'enlace', type: 'button', onclick: function () { ir('panel'); } }, 'Panel del organizador'));
+var $tostada = el('div', { class: 'tostada', role: 'status', hidden: true });
+agregar(raiz, [$picado, el('div', { class: 'marco' }, $cab, $nav, $barra, $main, $pie), $tostada]);
+
+var relojTostada = null;
+function avisar(txt) {
+  $tostada.textContent = txt; $tostada.hidden = false;
+  clearTimeout(relojTostada); relojTostada = setTimeout(function () { $tostada.hidden = true; }, 4200);
+}
+function copiar(txt) {
+  try { return navigator.clipboard.writeText(txt).then(function () { return true; }, function () { return false; }); }
+  catch (e) { return Promise.resolve(false); }
+}
+
+/* ---------- navegación ---------- */
+var TABS = { 'muro': 'Muro de deseos', 'mi-codigo': 'Entrar con mi código', 'panel': 'Panel de control' };
+function tabDeHash() { var h = String(location.hash || '').replace('#', ''); return TABS[h] ? h : 'muro'; }
+function ir(tab) {
+  S.tab = tab;
+  try { if (tabDeHash() !== tab) location.hash = '#' + tab; } catch (e) {}
+  renderNav(); renderBarra(); renderPrincipal();
+  try { window.scrollTo(0, 0); } catch (e) {}
+  alCambiarTab();
+}
+function alCambiarTab() {
+  if (!cliente) return;
+  if (S.tab === 'mi-codigo' && S.yo) entrar(S.codigo, true);
+  if (S.tab === 'muro') cargarMuro();
+}
+window.addEventListener('hashchange', function () { var t = tabDeHash(); if (t !== S.tab) { S.tab = t; renderNav(); renderBarra(); renderPrincipal(); alCambiarTab(); } });
+
+function render() { renderCabecera(); renderNav(); renderBarra(); renderPrincipal(); }
+function renderCabecera() {
+  var ev = eventoVisible(), n = S.muro ? S.muro.personas.length : 0, datos = [];
+  if (ev.fecha) datos.push(el('li', null, el('span', { text: 'Fecha' }), fechaLarga(ev.fecha)));
+  if (ev.lugar) datos.push(el('li', null, el('span', { text: 'Lugar' }), ev.lugar));
+  if (ev.presupuesto) datos.push(el('li', null, el('span', { text: 'Presupuesto' }), ev.presupuesto));
+  if (S.muro) datos.push(el('li', null, el('span', { text: 'Sorteo' }), ev.sorteo ? 'Ya se hizo' : 'Pendiente'));
+  $cab.textContent = '';
+  agregar($cab, [
+    el('p', { class: 'ceja', text: 'Amigo secreto' + (n ? ' · ' + n + ' participantes' : '') }),
+    el('h1', { text: ev.nombre }),
+    datos.length ? el('ul', { class: 'datos' }, datos) : null
+  ]);
+  try { document.title = ev.nombre; } catch (e) {}
+}
+function renderNav() {
+  $nav.textContent = '';
+  Object.keys(TABS).forEach(function (t) {
+    if (t === 'panel' && !S.sesion && S.tab !== 'panel') return;
+    $nav.appendChild(el('a', { class: 'pestana', href: '#' + t, 'aria-current': S.tab === t ? 'page' : null,
+      onclick: function (e) { e.preventDefault(); ir(t); } }, TABS[t]));
+  });
+}
+function renderBarra() {
+  if (S.tab !== 'panel' || S.cargaPanel !== 'lista') { $barra.hidden = true; return; }
+  $barra.hidden = false; $barra.className = 'barra' + (S.guardado === 'error' ? ' falla' : '');
+  $barra.textContent = '';
+  agregar($barra, [
+    el('div', { class: 'lado' },
+      el('strong', { text: S.guardado === 'guardando' ? 'Guardando…' : S.guardado === 'error' ? 'No se guardó el último cambio.' : 'Todo guardado.' }),
+      el('span', { class: 'menor', text: S.guardado === 'error' ? S.errorPanel : 'Cada cambio se guarda al momento y tus amigos lo ven al recargar.' })),
+    el('div', { class: 'lado' }, el('button', { class: 'enlace', type: 'button', onclick: salirPanel }, 'Cerrar sesión'))]);
+}
+function renderPrincipal() {
+  $main.textContent = '';
+  if (!cliente) { agregar($main, vistaSinConexion()); return; }
+  agregar($main, S.tab === 'muro' ? vistaMuro() : S.tab === 'mi-codigo' ? vistaCodigo() : vistaPanel());
+}
+function vistaSinConexion() {
+  var falta = !configurado;
+  return el('section', { class: 'hoja' },
+    el('h2', { text: falta ? 'Falta conectar la base de datos' : 'No se pudo cargar la página completa' }),
+    el('p', { class: 'bajada', text: falta
+      ? 'Abre el archivo config.js en tu repositorio de GitHub y pega la dirección y la llave pública de tu proyecto de Supabase (Parte 4 y 5 de la guía). Después de guardar, espera un par de minutos y recarga esta página.'
+      : 'No cargó la librería que conecta con la base de datos. Revisa tu conexión a internet y recarga la página.' }));
+}
+
+/* ---------- muro ---------- */
+function cargarMuro() {
+  if (!cliente) return Promise.resolve();
+  return rpc('muro').then(function (d) {
+    S.muro = d; S.cargaMuro = 'lista'; S.errorMuro = '';
+    renderCabecera(); if (S.tab === 'muro') renderPrincipal();
+  }).catch(function (e) {
+    if (S.muro) return;
+    S.cargaMuro = 'error'; S.errorMuro = mensajeError(e);
+    if (S.tab === 'muro') renderPrincipal();
+  });
+}
+function listaDeseos(items) {
+  if (!items || !items.length) return null;
+  return el('ol', { class: 'eti-lista' }, items.map(function (it, i) {
+    var url = normalizarUrl(it.u) || '', titulo = it.t || dominio(url) || 'Regalo';
+    return el('li', null, el('span', { class: 'num', text: String(i + 1) }),
+      el('div', null,
+        url ? el('a', { href: url, target: '_blank', rel: 'noopener noreferrer', text: titulo }) : el('span', { class: 'sin-link', text: titulo }),
+        url && it.t ? el('span', { class: 'dominio', text: dominio(url) }) : null));
+  }));
+}
+function etiqueta(p, ceja, vacio, grande) {
+  var items = p.deseos || [];
+  return el('div', { class: 'colgada' }, el('article', { class: 'etiqueta' },
+    el('p', { class: 'eti-ceja', text: ceja }),
+    el(grande ? 'h2' : 'h3', { class: 'eti-nombre', text: p.nombre }),
+    listaDeseos(items) || el('p', { class: 'vacio', text: vacio }),
+    grande ? null : el('p', { class: 'eti-cuenta', text: items.length + ' de ' + MAX_DESEOS })));
+}
+function vistaMuro() {
+  var cabeza = el('div', { class: 'intro' },
+    el('div', null, el('h2', { text: 'Muro de deseos' }),
+      el('p', { class: 'bajada', text: 'Cada quien pide hasta ' + MAX_DESEOS + ' regalos. Toca un regalo para abrir su link.' })),
+    el('button', { class: 'boton claro', type: 'button', onclick: function () { ir('mi-codigo'); } }, S.yo ? 'Editar mi lista' : 'Agregar mis regalos'));
+  if (S.cargaMuro === 'cargando') return el('section', { class: 'muro' }, cabeza, el('p', { class: 'cargando', text: 'Colgando las etiquetas…' }));
+  if (S.cargaMuro === 'error') {
+    return el('section', { class: 'muro' }, cabeza, el('div', { class: 'hoja' },
+      el('h3', { text: 'No se pudo abrir el muro' }),
+      el('p', { class: 'bajada', text: S.errorMuro + ' Si el problema sigue, avísale a quien organiza: puede que la base de datos esté en pausa.' }),
+      el('div', { class: 'acciones' }, el('button', { class: 'boton', type: 'button', onclick: function () { S.cargaMuro = 'cargando'; renderPrincipal(); cargarMuro(); } }, 'Reintentar'))));
+  }
+  return el('section', { class: 'muro' }, cabeza,
+    el('div', { class: 'etiquetas' }, S.muro.personas.map(function (p) { return etiqueta(p, 'Lista de', 'Todavía no pide nada'); })));
+}
+function filasDeseo(prefijo, items) {
+  var filas = [], i;
+  for (i = 0; i < MAX_DESEOS; i++) {
+    var it = items[i] || { t: '', u: '' };
+    filas.push(el('div', { class: 'fila-deseo' }, el('span', { class: 'num', text: String(i + 1) }),
+      campo('¿Qué es?', el('input', { id: prefijo + '-t' + i, type: 'text', maxlength: '90', value: it.t, placeholder: i === 0 ? 'Audífonos' : '' })),
+      campo('Link', el('input', { id: prefijo + '-u' + i, type: 'url', inputmode: 'url', value: it.u, placeholder: i === 0 ? 'https://…' : '' }))));
+  }
+  return filas;
+}
+function leerFilas(prefijo) {
+  var items = [], malos = [], i;
+  for (i = 0; i < MAX_DESEOS; i++) {
+    var t = document.getElementById(prefijo + '-t' + i).value.trim(), u = normalizarUrl(document.getElementById(prefijo + '-u' + i).value);
+    if (u === null) { malos.push(i + 1); u = ''; }
+    if (t || u) items.push({ t: t, u: u });
+  }
+  return { items: items, malos: malos };
+}
+
+/* ---------- entrar con mi código ---------- */
+function entrar(txt, silencioso) {
+  var c = limpiarCodigo(txt);
+  if (c.length !== 8) {
+    S.errorCodigo = silencioso ? '' : 'El código tiene 8 letras y números. Revísalo en tu mensaje.';
+    if (S.tab === 'mi-codigo') renderPrincipal(); return Promise.resolve();
+  }
+  S.entrando = true; S.errorCodigo = '';
+  if (S.tab === 'mi-codigo' && !silencioso) renderPrincipal();
+  return rpc('entrar', { p_codigo: c }).then(function (d) {
+    S.entrando = false;
+    if (!d) {
+      S.yo = null; S.codigo = '';
+      guardarLocal('iv-codigo', null);
+      S.errorCodigo = silencioso ? '' : 'Ese código no existe. Revísalo en el mensaje que te llegó.';
+    } else {
+      S.estrenar = !silencioso || !!(S.yo && !S.yo.para && d.para);
+      S.yo = d; S.codigo = c; S.errorLista = '';
+      guardarLocal('iv-codigo', c);
+      if (S.muro && S.muro.evento && S.muro.evento.sorteo !== d.sorteo) cargarMuro();
+    }
+    renderNav(); renderPrincipal();
+  }).catch(function (e) {
+    S.entrando = false; S.errorCodigo = silencioso ? '' : mensajeError(e);
+    if (S.tab === 'mi-codigo') renderPrincipal();
+  });
+}
+function salirCodigo() { S.yo = null; S.codigo = ''; S.errorCodigo = ''; guardarLocal('iv-codigo', null); renderPrincipal(); }
+function vistaCodigo() {
+  var ev = eventoVisible();
+  if (!S.yo) {
+    var entrada = el('input', { id: 'codigo', class: 'codigo', type: 'text', autocomplete: 'off', autocapitalize: 'characters', spellcheck: 'false', placeholder: 'XXXX-XXXX', maxlength: '12', value: S.codigo ? formatoCodigo(S.codigo) : '' });
+    return el('form', { class: 'hoja sobre', onsubmit: function (e) { e.preventDefault(); if (!S.entrando) entrar(entrada.value); } },
+      el('h2', { text: 'Entra con tu código' }),
+      el('p', { class: 'bajada', text: 'Es el código personal que te llegó por mensaje. Con él armas tu lista de deseos y, después del sorteo, ves a quién le regalas.' }),
+      campo('Tu código personal', entrada),
+      el('p', { class: 'error', role: 'alert', text: S.errorCodigo }),
+      el('div', { class: 'acciones' }, el('button', { class: 'boton', type: 'submit', disabled: S.entrando }, S.entrando ? 'Buscando…' : 'Entrar')));
+  }
+  var yo = S.yo, resultado;
+  if (yo.para) {
+    resultado = el('div', { class: 'revelado', style: S.estrenar ? null : 'animation:none' },
+      etiqueta(yo.para, yo.nombre + ', te tocó regalarle a', 'Todavía no pide nada. Vuelve más adelante.', true));
+    if (ev.presupuesto) resultado.querySelector('.etiqueta').appendChild(el('div', { class: 'pie-eti' }, el('p', { class: 'nota', text: 'Presupuesto: ' + ev.presupuesto })));
+  } else {
+    resultado = el('section', { class: 'hoja' }, el('h3', { text: 'El sorteo todavía no se hace' }),
+      el('p', { class: 'bajada', text: 'Cuando se haga, vuelve a entrar con este mismo código y aquí verás a quién le regalas. Mientras, arma tu lista.' }),
+      el('div', { class: 'acciones' }, el('button', { class: 'boton sec chico', type: 'button', onclick: function () { entrar(S.codigo, true).then(function () { if (S.yo && !S.yo.para) avisar('Todavía no hay sorteo.'); }); } }, 'Revisar de nuevo')));
+  }
+  S.estrenar = false;
+  var err = el('p', { class: 'error', role: 'alert', text: S.errorLista });
+  var lista = el('form', { class: 'hoja', novalidate: true, onsubmit: function (e) {
+      e.preventDefault();
+      if (S.guardandoLista) return;
+      var f = leerFilas('mio');
+      if (f.malos.length) { err.textContent = 'El link del regalo ' + f.malos[0] + ' no parece válido. Cópialo completo, empezando con https://'; return; }
+      S.guardandoLista = true; err.textContent = '';
+      rpc('guardar_mis_deseos', { p_codigo: S.codigo, p_items: f.items }).then(function (d) {
+        S.guardandoLista = false; S.yo.deseos = d; S.errorLista = '';
+        avisar(d.length ? 'Lista guardada. Ya aparece en el muro.' : 'Tu lista quedó vacía.');
+        renderPrincipal(); cargarMuro();
+      }).catch(function (x) { S.guardandoLista = false; S.errorLista = mensajeError(x); err.textContent = S.errorLista; });
+    } },
+    el('h3', { text: 'Tu lista de deseos' }),
+    el('p', { class: 'bajada', text: 'Hasta ' + MAX_DESEOS + ' regalos. Pega el link de la tienda para que tu amigo secreto no falle. Puedes cambiarla cuando quieras.' }),
+    filasDeseo('mio', yo.deseos || []),
+    err,
+    el('div', { class: 'acciones' }, el('button', { class: 'boton', type: 'submit' }, 'Guardar mi lista')));
+  return el('div', { class: 'entrada' },
+    el('div', { class: 'saludo' }, el('h2', { text: 'Hola, ' + yo.nombre }),
+      el('button', { class: 'enlace', type: 'button', onclick: salirCodigo }, 'Salir y olvidar mi código en este dispositivo')),
+    el('div', { class: 'dos' }, resultado, lista));
+}
+
+/* ---------- panel del organizador ---------- */
+var cola = Promise.resolve();
+function accion(fn, args, quieto) {
+  S.guardado = 'guardando'; S.errorPanel = ''; renderBarra();
+  var p = cola.then(function () { return rpc(fn, args); }).then(function (d) {
+    S.admin = d; S.guardado = 'ok'; renderBarra();
+    if (!quieto && S.tab === 'panel') renderPrincipal();
+    cargarMuro();
+    return d;
+  }, function (e) {
+    S.guardado = 'error'; S.errorPanel = mensajeError(e); renderBarra();
+    if (!quieto && S.tab === 'panel') renderPrincipal();
+    return null;
+  });
+  cola = p;
+  return p;
+}
+function cargarPanel() {
+  S.cargaPanel = 'cargando'; renderNav(); renderBarra(); if (S.tab === 'panel') renderPrincipal();
+  return rpc('admin_estado').then(function (d) {
+    S.admin = d; S.cargaPanel = 'lista';
+    if (!S.editando && d.personas.length) S.editando = d.personas[0].id;
+  }).catch(function (e) {
+    S.cargaPanel = (e && (e.code === '42501' || /permission denied|No autorizado/i.test(e.message || ''))) ? 'ajeno' : 'error';
+    S.errorPanel = mensajeError(e);
+  }).then(function () { renderNav(); renderBarra(); if (S.tab === 'panel') renderPrincipal(); });
+}
+function entrarPanel(correo, clave) {
+  S.entrandoPanel = true; S.errorLogin = ''; renderPrincipal();
+  cliente.auth.signInWithPassword({ email: correo, password: clave }).then(function (r) {
+    S.entrandoPanel = false;
+    if (r.error || !r.data || !r.data.session) {
+      var m = (r.error && r.error.message) || '';
+      S.errorLogin = /invalid login/i.test(m) ? 'Correo o contraseña incorrectos.' : /confirm/i.test(m) ? 'Ese usuario no está confirmado. Créalo de nuevo en Supabase con "Auto Confirm User" marcado.' : (m || 'No se pudo iniciar sesión.');
+      renderPrincipal(); return;
+    }
+    S.sesion = r.data.session; cargarPanel();
+  }).catch(function (e) { S.entrandoPanel = false; S.errorLogin = mensajeError(e); renderPrincipal(); });
+}
+function salirPanel() {
+  var listo = function () { S.sesion = null; S.admin = null; S.cargaPanel = 'no'; S.guardado = 'ok'; S.manual = {}; S.confirma = null; ir('muro'); };
+  try { cliente.auth.signOut().then(listo, listo); } catch (e) { listo(); }
+}
+function vistaPanel() {
+  if (!S.sesion) {
+    var correo = el('input', { id: 'panel-correo', type: 'email', autocomplete: 'username', inputmode: 'email' });
+    var clave = el('input', { id: 'panel-clave', type: 'password', autocomplete: 'current-password' });
+    return el('form', { class: 'hoja sobre', onsubmit: function (e) { e.preventDefault(); if (!S.entrandoPanel && correo.value && clave.value) entrarPanel(correo.value.trim(), clave.value); } },
+      el('h2', { text: 'Panel del organizador' }),
+      el('p', { class: 'bajada', text: 'Solo quien organiza el intercambio puede entrar. Si eres participante, usa "Entrar con mi código".' }),
+      campo('Correo', correo), campo('Contraseña', clave),
+      el('p', { class: 'error', role: 'alert', text: S.errorLogin }),
+      el('div', { class: 'acciones' }, el('button', { class: 'boton', type: 'submit', disabled: S.entrandoPanel }, S.entrandoPanel ? 'Entrando…' : 'Entrar')));
+  }
+  if (S.cargaPanel === 'cargando' || S.cargaPanel === 'no') return el('section', { class: 'hoja' }, el('h2', { text: 'Abriendo tu panel…' }));
+  if (S.cargaPanel === 'ajeno' || S.cargaPanel === 'error') {
+    return el('section', { class: 'hoja' },
+      el('h2', { text: S.cargaPanel === 'ajeno' ? 'Esta cuenta no es la organizadora' : 'No se pudo abrir el panel' }),
+      el('p', { class: 'bajada', text: S.cargaPanel === 'ajeno' ? 'La base de datos solo le abre el panel al usuario registrado como administrador.' : S.errorPanel }),
+      el('div', { class: 'acciones' },
+        S.cargaPanel === 'error' ? el('button', { class: 'boton', type: 'button', onclick: cargarPanel }, 'Reintentar') : null,
+        el('button', { class: 'boton sec', type: 'button', onclick: salirPanel }, 'Cerrar sesión')));
+  }
+  return el('div', { class: 'pila' }, seccionPasos(), seccionCodigos(), seccionSorteo(),
+    el('div', { class: 'dos' }, seccionDeseos(), el('div', { class: 'pila' }, seccionPersonas(), seccionEvento())));
+}
+function enviados() { return S.admin.personas.filter(function (p) { return !!p.enviado_en; }).length; }
+function seccionPasos() {
+  var a = S.admin, n = a.personas.length, env = enviados();
+  function paso(hecho, txt) { return el('li', { class: hecho ? 'hecho' : null }, el('span', { text: txt })); }
+  return el('section', { class: 'hoja' }, el('h2', { text: 'Panel de control' }),
+    el('ol', { class: 'pasos' },
+      paso(!!(a.evento.fecha || a.evento.presupuesto), 'Anota fecha y presupuesto.'),
+      paso(n > 0 && env >= n, 'Envía los códigos personales: ' + env + ' de ' + n + '.'),
+      paso(!!a.evento.sorteo_en, 'Haz el sorteo.'),
+      paso(false, 'Avisa al grupo que ya pueden ver a quién les tocó.')));
+}
+function marcarEnviado(p) { if (!p.enviado_en) accion('admin_marcar_enviado', { p_id: p.id, p_enviado: true }); }
+function filaCodigo(p) {
+  var a = S.admin, esYo = p.id === a.evento.organizador_id, msg = mensajeCodigo(p.nombre, p.codigo, a.evento), acciones;
+  if (esYo) {
+    acciones = [el('button', { class: 'boton chico', type: 'button', onclick: function () { marcarEnviado(p); S.codigo = p.codigo; ir('mi-codigo'); entrar(p.codigo); } }, 'Entrar con mi código')];
+  } else {
+    acciones = [
+      el('a', { class: 'boton wa chico', href: enlaceWa(p.tel, msg), target: '_blank', rel: 'noopener noreferrer', onclick: function () { marcarEnviado(p); } }, 'WhatsApp'),
+      el('button', { class: 'boton sec chico', type: 'button', onclick: function () {
+        copiar(msg).then(function (ok) {
+          if (ok) { avisar('Mensaje de ' + p.nombre + ' copiado. Pégalo solo en su chat.'); marcarEnviado(p); }
+          else { S.manual[p.id] = true; renderPrincipal(); }
+        });
+      } }, 'Copiar mensaje')];
+  }
+  if (p.enviado_en) acciones.push(el('button', { class: 'enlace', type: 'button', onclick: function () { accion('admin_marcar_enviado', { p_id: p.id, p_enviado: false }); } }, 'Marcar pendiente'));
+  acciones.push(el('button', { class: 'enlace', type: 'button', onclick: function () { S.confirma = 'codigo-' + p.id; renderPrincipal(); } }, 'Cambiar código'));
+  return el('li', null,
+    el('div', { class: 'quien' }, el('span', { text: p.nombre + (esYo ? ' (tú)' : '') }),
+      el('span', { class: 'pastilla ' + (p.enviado_en ? 'bien' : 'espera'), text: p.enviado_en ? (esYo ? 'Visto' : 'Enviado') : 'Pendiente' })),
+    el('div', { class: 'acciones' }, acciones),
+    S.confirma === 'codigo-' + p.id ? el('div', { class: 'manual caja-aviso' }, el('span', { text: 'El código actual de ' + p.nombre + ' dejará de servir y tendrás que mandarle el nuevo.' }),
+      el('div', { class: 'acciones' },
+        el('button', { class: 'boton chico', type: 'button', onclick: function () { S.confirma = null; delete S.manual[p.id]; accion('admin_nuevo_codigo', { p_id: p.id }); } }, 'Sí, cambiar'),
+        el('button', { class: 'boton sec chico', type: 'button', onclick: function () { S.confirma = null; renderPrincipal(); } }, 'Cancelar'))) : null,
+    S.manual[p.id] ? el('div', { class: 'manual' }, campo('No se pudo copiar solo. Copia este mensaje a mano:', el('textarea', { id: 'manual-' + p.id, readonly: true, value: msg }))) : null);
+}
+function seccionCodigos() {
+  var a = S.admin, n = a.personas.length;
+  return el('section', { class: 'hoja' }, el('h3', { text: 'Códigos personales' }),
+    el('p', { class: 'conteo' }, enviados() + ' de ' + n, el('small', { text: 'códigos entregados' })),
+    el('p', { class: 'nota', text: 'Cada botón abre el mensaje de una sola persona, con su código y el link de esta página. Mándalo por chat privado, nunca al grupo.' }),
+    el('ul', { class: 'envios' }, a.personas.map(filaCodigo)));
+}
+function seccionSorteo() {
+  var a = S.admin, n = a.personas.length, h = el('section', { class: 'hoja' }, el('h3', { text: 'Sorteo' }));
+  if (!a.evento.sorteo_en) {
+    agregar(h, [
+      el('p', { class: 'bajada', text: 'El sorteo se hace dentro de la base de datos: reparte a los ' + n + ' participantes al azar, nadie se regala a sí mismo y el resultado no llega a este panel. Cada quien lo ve con su código.' }),
+      el('div', { class: 'acciones' }, el('button', { class: 'boton', type: 'button', disabled: n < 3 || S.sorteando, onclick: function () {
+        S.sorteando = true; renderPrincipal();
+        accion('admin_sortear', {}, true).then(function (d) { S.sorteando = false; if (d) avisar('Sorteo hecho. Avisa al grupo.'); renderPrincipal(); });
+      } }, S.sorteando ? 'Sorteando…' : 'Hacer sorteo'),
+      n < 3 ? el('span', { class: 'nota', text: 'Se necesitan al menos 3 participantes.' }) : null),
+      seccionRestricciones()]);
+    return h;
+  }
+  var aviso = mensajeSorteo(a.evento);
+  agregar(h, [
+    el('p', { class: 'bajada', text: 'Sorteo hecho el ' + new Date(a.evento.sorteo_en).toLocaleDateString('es-MX', { day: 'numeric', month: 'long' }) + '. Avisa al grupo para que entren con su código. Este mensaje no trae nada secreto.' }),
+    el('div', { class: 'acciones' },
+      el('a', { class: 'boton wa', href: enlaceWa('', aviso), target: '_blank', rel: 'noopener noreferrer' }, 'Avisar por WhatsApp'),
+      el('button', { class: 'boton sec', type: 'button', onclick: function () { copiar(aviso).then(function (ok) { avisar(ok ? 'Aviso copiado. Pégalo en el grupo.' : 'No se pudo copiar. Usa el botón de WhatsApp.'); }); } }, 'Copiar aviso')),
+    S.confirma === 'deshacer'
+      ? el('div', { class: 'caja-aviso' }, el('span', { text: 'Se borra el reparto actual. Los códigos siguen sirviendo, pero a cada quien le puede tocar otra persona.' }),
+          el('div', { class: 'acciones' },
+            el('button', { class: 'boton chico', type: 'button', onclick: function () { S.confirma = null; accion('admin_deshacer_sorteo', {}); } }, 'Sí, deshacer'),
+            el('button', { class: 'boton sec chico', type: 'button', onclick: function () { S.confirma = null; renderPrincipal(); } }, 'Cancelar')))
+      : el('div', { class: 'acciones' }, el('button', { class: 'enlace', type: 'button', onclick: function () { S.confirma = 'deshacer'; renderPrincipal(); } }, 'Deshacer sorteo'))]);
+  return h;
+}
+function seccionRestricciones() {
+  var a = S.admin;
+  function opciones() { return [el('option', { value: '', text: 'Elige' })].concat(a.personas.map(function (p) { return el('option', { value: String(p.id), text: p.nombre }); })); }
+  var s1 = el('select', { id: 'ex-a' }, opciones()), s2 = el('select', { id: 'ex-b' }, opciones());
+  return el('details', { open: a.exclusiones.length ? true : null }, el('summary', { text: 'Parejas que no deben tocarse (opcional)' }),
+    el('div', { class: 'dentro' },
+      el('div', { class: 'rejilla' }, campo('Persona', s1), campo('No se regala con', s2)),
+      el('div', { class: 'acciones' }, el('button', { class: 'boton sec chico', type: 'button', onclick: function () {
+        if (!s1.value || !s2.value || s1.value === s2.value) return;
+        accion('admin_exclusion', { p_a: +s1.value, p_b: +s2.value, p_poner: true });
+      } }, 'Agregar pareja')),
+      a.exclusiones.length ? el('ul', { class: 'lista-simple' }, a.exclusiones.map(function (x) {
+        var p1 = personaAdmin(x[0]), p2 = personaAdmin(x[1]);
+        return el('li', null, el('span', { text: (p1 ? p1.nombre : '?') + ' y ' + (p2 ? p2.nombre : '?') }),
+          el('button', { class: 'enlace', type: 'button', onclick: function () { accion('admin_exclusion', { p_a: x[0], p_b: x[1], p_poner: false }); } }, 'Quitar'));
+      })) : null));
+}
+function seccionDeseos() {
+  var a = S.admin;
+  if (!personaAdmin(S.editando)) S.editando = a.personas.length ? a.personas[0].id : null;
+  var p = personaAdmin(S.editando), h = el('section', { class: 'hoja' }, el('h3', { text: 'Listas de deseos' }));
+  if (!p) { agregar(h, el('p', { class: 'bajada', text: 'Agrega participantes para ver sus listas.' })); return h; }
+  var err = el('p', { class: 'error', role: 'alert' });
+  agregar(h, [
+    el('p', { class: 'bajada', text: 'Cada quien llena la suya con su código. Aquí puedes corregir o capturar la de alguien que te lo pida.' }),
+    el('div', { class: 'fichas', role: 'group', 'aria-label': 'Participante' }, a.personas.map(function (x) {
+      return el('button', { class: 'ficha', type: 'button', 'aria-pressed': x.id === p.id ? 'true' : 'false', onclick: function () { S.editando = x.id; renderPrincipal(); } },
+        x.nombre, el('span', { class: 'cuantos', text: String((x.deseos || []).length) }));
+    })),
+    filasDeseo('deseo', p.deseos || []),
+    err,
+    el('div', { class: 'acciones' }, el('button', { class: 'boton', type: 'button', onclick: function () {
+      var f = leerFilas('deseo');
+      if (f.malos.length) { err.textContent = 'El link del regalo ' + f.malos[0] + ' no parece válido. Debe empezar con https://'; return; }
+      accion('admin_guardar_deseos', { p_id: p.id, p_items: f.items }).then(function (d) { if (d) avisar('Lista de ' + p.nombre + ' guardada.'); });
+    } }, 'Guardar lista de ' + p.nombre))]);
+  return h;
+}
+function seccionPersonas() {
+  var a = S.admin, fijo = !!a.evento.sorteo_en;
+  var nuevo = el('input', { id: 'nuevo-nombre', type: 'text', maxlength: '30', placeholder: 'Nombre' });
+  return el('section', { class: 'hoja' }, el('h3', { text: 'Participantes' }),
+    el('p', { class: 'bajada', text: fijo ? 'Con el sorteo hecho no se agregan ni quitan personas. Para cambiar la lista, deshaz el sorteo.' : 'El WhatsApp es opcional: sirve para abrir el chat de cada quien directo. Solo tú lo ves.' }),
+    el('div', null, a.personas.map(function (p) {
+      var nombre = el('input', { id: 'per-n-' + p.id, type: 'text', maxlength: '30', value: p.nombre });
+      var tel = el('input', { id: 'per-t-' + p.id, type: 'tel', inputmode: 'tel', value: p.tel, placeholder: '10 dígitos' });
+      function guardar() {
+        if (!nombre.value.trim()) { nombre.value = p.nombre; return; }
+        accion('admin_editar_persona', { p_id: p.id, p_nombre: nombre.value.trim(), p_tel: tel.value }, true);
+      }
+      nombre.addEventListener('change', guardar); tel.addEventListener('change', guardar);
+      return el('div', { class: 'persona' }, campo('Nombre', nombre), campo('WhatsApp', tel),
+        fijo ? el('span') : (S.confirma === 'quitar-' + p.id
+          ? el('button', { class: 'enlace', type: 'button', onclick: function () { S.confirma = null; accion('admin_quitar_persona', { p_id: p.id }); } }, '¿Seguro? Quitar')
+          : el('button', { class: 'enlace', type: 'button', 'aria-label': 'Quitar a ' + p.nombre, onclick: function () { S.confirma = 'quitar-' + p.id; renderPrincipal(); } }, 'Quitar')));
+    })),
+    fijo ? null : el('form', { class: 'acciones', onsubmit: function (e) { e.preventDefault(); if (nuevo.value.trim()) accion('admin_agregar_persona', { p_nombre: nuevo.value.trim() }); } },
+      campo('Agregar participante', nuevo), el('button', { class: 'boton sec chico', type: 'submit' }, 'Agregar')));
+}
+function seccionEvento() {
+  var a = S.admin, ev = a.evento;
+  var nombre = el('input', { id: 'ev-nombre', type: 'text', maxlength: '60', value: ev.nombre });
+  var fecha = el('input', { id: 'ev-fecha', type: 'date', value: ev.fecha || '' });
+  var presupuesto = el('input', { id: 'ev-presupuesto', type: 'text', maxlength: '40', value: ev.presupuesto, placeholder: '$300' });
+  var lugar = el('input', { id: 'ev-lugar', type: 'text', maxlength: '60', value: ev.lugar });
+  var yo = el('select', { id: 'ev-yo' }, el('option', { value: '', text: 'Elige' }), a.personas.map(function (p) { return el('option', { value: String(p.id), text: p.nombre }); }));
+  yo.value = ev.organizador_id ? String(ev.organizador_id) : '';
+  function guardar(quieto) {
+    if (!nombre.value.trim()) { nombre.value = ev.nombre; }
+    return accion('admin_guardar_evento', { p_nombre: nombre.value.trim(), p_fecha: fecha.value, p_presupuesto: presupuesto.value, p_lugar: lugar.value, p_organizador: yo.value ? +yo.value : null }, quieto);
+  }
+  [nombre, fecha, presupuesto, lugar].forEach(function (c) { c.addEventListener('change', function () { guardar(true); }); });
+  yo.addEventListener('change', function () { guardar(false); });
+  return el('section', { class: 'hoja' }, el('h3', { text: 'Datos del intercambio' }),
+    el('div', { class: 'rejilla' }, campo('Nombre del intercambio', nombre), campo('Fecha', fecha), campo('Presupuesto', presupuesto), campo('Lugar', lugar), campo('¿Quién eres tú?', yo)),
+    el('p', { class: 'nota', text: 'Link para tus amigos: ' + enlacePagina() }));
+}
+
+/* ---------- arranque ---------- */
+S.tab = tabDeHash();
+render();
+if (cliente) {
+  cargarMuro();
+  var guardado = leerLocal('iv-codigo');
+  if (guardado) { S.codigo = limpiarCodigo(guardado); entrar(S.codigo, true); }
+  cliente.auth.getSession().then(function (r) {
+    var s = r && r.data && r.data.session;
+    if (s) { S.sesion = s; cargarPanel(); }
+  }).catch(function () {});
+}
+
+})();
+</script>
+</body>
+</html>
