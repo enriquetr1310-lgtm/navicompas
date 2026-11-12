@@ -5,6 +5,6 @@
 // La llave "publishable" está hecha para ser pública: no da acceso a nada
 // por sí sola. NUNCA pegues aquí la llave "secret" (sb_secret_...).
 window.INTERCAMBIO_CONFIG = {
-  url: 'https://TU-PROYECTO.supabase.co',
-  llave: 'PEGA_AQUI_TU_LLAVE_PUBLISHABLE'
+  url: 'https://hueymrccrosiavvaogvd.supabase.co',
+  llave: 'sb_publishable_eBDldI5wsoVgW_mOO0h75g__4hwaFFi'
 };
